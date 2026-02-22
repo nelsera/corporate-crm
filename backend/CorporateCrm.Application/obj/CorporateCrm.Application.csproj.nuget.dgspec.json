@@ -46,6 +46,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.*, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.*, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

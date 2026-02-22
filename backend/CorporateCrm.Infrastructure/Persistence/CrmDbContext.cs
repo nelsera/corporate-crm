@@ -11,48 +11,48 @@ public sealed class CrmDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<EventStoreEventEntity>(b =>
+        modelBuilder.Entity<EventStoreEventEntity>(builder =>
         {
-            b.ToTable("event_store_events");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.AggregateId).IsRequired();
-            b.Property(x => x.AggregateType).HasMaxLength(100).IsRequired();
-            b.Property(x => x.EventType).HasMaxLength(150).IsRequired();
-            b.Property(x => x.EventVersion).IsRequired();
-            b.Property(x => x.EventData).HasColumnType("jsonb").IsRequired();
-            b.Property(x => x.Metadata).HasColumnType("jsonb").IsRequired();
-            b.Property(x => x.OccurredAt).IsRequired();
-            b.HasIndex(x => x.AggregateId).HasDatabaseName("idx_event_store_aggregate_id");
+            builder.ToTable("event_store_events");
+            builder.HasKey(customer => customer.Id);
+            builder.Property(customer => customer.AggregateId).IsRequired();
+            builder.Property(customer => customer.AggregateType).HasMaxLength(100).IsRequired();
+            builder.Property(customer => customer.EventType).HasMaxLength(150).IsRequired();
+            builder.Property(customer => customer.EventVersion).IsRequired();
+            builder.Property(customer => customer.EventData).HasColumnType("jsonb").IsRequired();
+            builder.Property(customer => customer.Metadata).HasColumnType("jsonb").IsRequired();
+            builder.Property(customer => customer.OccurredAt).IsRequired();
+            builder.HasIndex(customer => customer.AggregateId).HasDatabaseName("idx_event_store_aggregate_id");
         });
 
-        modelBuilder.Entity<CustomerReadModelEntity>(b =>
+        modelBuilder.Entity<CustomerReadModelEntity>(builder =>
         {
-            b.ToTable("customers_read_model");
-            b.HasKey(x => x.Id);
+            builder.ToTable("customers_read_model");
+            builder.HasKey(customer => customer.Id);
 
-            b.Property(x => x.CustomerType).HasMaxLength(20).IsRequired();
-            b.Property(x => x.Name).HasMaxLength(200).IsRequired();
-            b.Property(x => x.CpfCnpj).HasMaxLength(20).IsRequired();
-            b.Property(x => x.Email).HasMaxLength(200).IsRequired();
-            b.Property(x => x.Phone).HasMaxLength(50);
+            builder.Property(customer => customer.CustomerType).HasMaxLength(20).IsRequired();
+            builder.Property(customer => customer.Name).HasMaxLength(200).IsRequired();
+            builder.Property(customer => customer.CpfCnpj).HasMaxLength(20).IsRequired();
+            builder.Property(customer => customer.Email).HasMaxLength(200).IsRequired();
+            builder.Property(customer => customer.Phone).HasMaxLength(50);
 
-            b.Property(x => x.BirthOrFoundationDate).IsRequired();
+            builder.Property(customer => customer.BirthOrFoundationDate).IsRequired();
 
-            b.Property(x => x.StateRegistration).HasMaxLength(50);
-            b.Property(x => x.IsStateRegistrationExempt).IsRequired();
+            builder.Property(customer => customer.StateRegistration).HasMaxLength(50);
+            builder.Property(customer => customer.IsStateRegistrationExempt).IsRequired();
 
-            b.Property(x => x.PostalCode).HasMaxLength(20);
-            b.Property(x => x.Street).HasMaxLength(200);
-            b.Property(x => x.Number).HasMaxLength(20);
-            b.Property(x => x.Neighborhood).HasMaxLength(200);
-            b.Property(x => x.City).HasMaxLength(200);
-            b.Property(x => x.State).HasMaxLength(50);
+            builder.Property(customer => customer.PostalCode).HasMaxLength(20);
+            builder.Property(customer => customer.Street).HasMaxLength(200);
+            builder.Property(customer => customer.Number).HasMaxLength(20);
+            builder.Property(customer => customer.Neighborhood).HasMaxLength(200);
+            builder.Property(customer => customer.City).HasMaxLength(200);
+            builder.Property(customer => customer.State).HasMaxLength(50);
 
-            b.Property(x => x.CreatedAt).IsRequired();
-            b.Property(x => x.UpdatedAt).IsRequired();
+            builder.Property(customer => customer.CreatedAt).IsRequired();
+            builder.Property(customer => customer.UpdatedAt).IsRequired();
 
-            b.HasIndex(x => x.CpfCnpj).IsUnique().HasDatabaseName("ux_customers_cpf_cnpj");
-            b.HasIndex(x => x.Email).IsUnique().HasDatabaseName("ux_customers_email");
+            builder.HasIndex(customer => customer.CpfCnpj).IsUnique().HasDatabaseName("ux_customers_cpf_cnpj");
+            builder.HasIndex(customer => customer.Email).IsUnique().HasDatabaseName("ux_customers_email");
         });
     }
 }
