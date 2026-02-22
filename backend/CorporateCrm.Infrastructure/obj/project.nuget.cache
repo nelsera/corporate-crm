@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "9uceszS3iIg=",
+  "dgSpecHash": "QClqBci2WXo=",
   "success": true,
   "projectFilePath": "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj",
   "expectedPackageFiles": [
+    "/root/.nuget/packages/fluentvalidation/11.12.0/fluentvalidation.11.12.0.nupkg.sha512",
     "/root/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/root/.nuget/packages/mediatr/12.5.0/mediatr.12.5.0.nupkg.sha512",
+    "/root/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/root/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "/root/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.3/microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "/root/.nuget/packages/microsoft.codeanalysis.common/4.5.0/microsoft.codeanalysis.common.4.5.0.nupkg.sha512",
@@ -29,6 +32,8 @@
     "/root/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/root/.nuget/packages/npgsql/8.0.6/npgsql.8.0.6.nupkg.sha512",
     "/root/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.11/npgsql.entityframeworkcore.postgresql.8.0.11.nupkg.sha512",
+    "/root/.nuget/packages/polly/7.2.4/polly.7.2.4.nupkg.sha512",
+    "/root/.nuget/packages/polly.extensions.http/3.0.0/polly.extensions.http.3.0.0.nupkg.sha512",
     "/root/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/root/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/root/.nuget/packages/system.composition/6.0.0/system.composition.6.0.0.nupkg.sha512",

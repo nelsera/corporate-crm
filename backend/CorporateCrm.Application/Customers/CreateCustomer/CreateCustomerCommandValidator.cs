@@ -9,7 +9,7 @@ public class CreateCustomerCommandValidator
     {
         RuleFor(customer => customer.CustomerType)
             .Must(customerType => customerType == "Individual" || customerType == "Company")
-            .WithMessage("CustomerType must be Individual or Company.");
+            .WithMessage("O tipo de cliente deve ser Pessoa Física ou Empresarial.");
 
         RuleFor(customer => customer.Name).NotEmpty();
         RuleFor(customer => customer.CpfCnpj).NotEmpty();
@@ -20,7 +20,7 @@ public class CreateCustomerCommandValidator
         {
             RuleFor(customerType => customerType.BirthOrFoundationDate)
                 .Must(BeAtLeast18YearsOld)
-                .WithMessage("Individual must be at least 18 years old.");
+                .WithMessage("O indivíduo deve ter pelo menos 18 anos de idade.");
         });
 
         When(customer => customer.CustomerType == "Company", () =>
@@ -28,7 +28,7 @@ public class CreateCustomerCommandValidator
             RuleFor(customer => customer)
                 .Must(customer => customer.IsStateRegistrationExempt || 
                            !string.IsNullOrWhiteSpace(customer.StateRegistration))
-                .WithMessage("Company must inform State Registration or mark as exempt.");
+                .WithMessage("A empresa deve informar o Registro Estadual ou marcar como isenta.");
         });
     }
 

@@ -3,13 +3,41 @@ using CorporateCrm.Application.Common.Exceptions;
 using CorporateCrm.Application.Customers.CreateCustomer;
 using CorporateCrm.Infrastructure.EventStore;
 using CorporateCrm.Infrastructure.Persistence;
+using CorporateCrm.Infrastructure.PostalCodes;
 using CorporateCrm.Infrastructure.ReadModel;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Polly;
+using Polly.Extensions.Http;
+using System.Net.Http.Headers;
+
+static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy() =>
+    HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .WaitAndRetryAsync(new[]
+        {
+            TimeSpan.FromMilliseconds(200),
+            TimeSpan.FromMilliseconds(500),
+            TimeSpan.FromSeconds(1)
+        });
 
 var builder = WebApplication.CreateBuilder(args);
+
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() 
+                     ?? new[] { "http://localhost:5173" };
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+    {
+        policy
+            .WithOrigins(allowedOrigins)
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -26,6 +54,14 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerCommandValida
 // Infrastructure implementations
 builder.Services.AddScoped<IEventStore, EfCoreEventStore>();
 builder.Services.AddScoped<ICustomerReadModelRepository, EfCoreCustomerReadModelRepository>();
+
+builder.Services.AddHttpClient<IPostalCodeLookup, ViaCepClient>(client =>
+{
+    client.BaseAddress = new Uri("https://viacep.com.br");
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+})
+.AddPolicyHandler(GetRetryPolicy())
+.AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(2)));
 
 var app = builder.Build();
 
@@ -70,6 +106,8 @@ if (app.Environment.IsDevelopment())
 
     app.UseSwaggerUI();
 }
+
+app.UseCors("Frontend");
 
 app.MapControllers();
 

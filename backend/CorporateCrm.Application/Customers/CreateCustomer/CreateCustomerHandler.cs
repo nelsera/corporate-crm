@@ -40,7 +40,7 @@ public sealed class CreateCustomerHandler : IRequestHandler<CreateCustomerComman
 
         if (exists)
         {
-            throw new ConflictException("Customer already exists for provided CPF/CNPJ or Email.");
+            throw new ConflictException("O cliente já existe para o CPF/CNPJ ou e-mail fornecido.");
         }
 
         // Create event
