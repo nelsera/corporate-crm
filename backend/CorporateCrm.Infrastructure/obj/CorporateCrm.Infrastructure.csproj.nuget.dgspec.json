@@ -4,14 +4,76 @@
     "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj": {}
   },
   "projects": {
-    "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj": {
+    "/src/CorporateCrm.Application/CorporateCrm.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj",
-        "projectName": "CorporateCrm.Infrastructure",
-        "projectPath": "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj",
+        "projectUniqueName": "/src/CorporateCrm.Application/CorporateCrm.Application.csproj",
+        "projectName": "CorporateCrm.Application",
+        "projectPath": "/src/CorporateCrm.Application/CorporateCrm.Application.csproj",
         "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/src/CorporateCrm.Infrastructure/obj/",
+        "outputPath": "/src/CorporateCrm.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/src/CorporateCrm.Domain/CorporateCrm.Domain.csproj": {
+                "projectPath": "/src/CorporateCrm.Domain/CorporateCrm.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/src/CorporateCrm.Domain/CorporateCrm.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/src/CorporateCrm.Domain/CorporateCrm.Domain.csproj",
+        "projectName": "CorporateCrm.Domain",
+        "projectPath": "/src/CorporateCrm.Domain/CorporateCrm.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/CorporateCrm.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/root/.nuget/NuGet/NuGet.Config"
@@ -42,6 +104,84 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.418/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj",
+        "projectName": "CorporateCrm.Infrastructure",
+        "projectPath": "/src/CorporateCrm.Infrastructure/CorporateCrm.Infrastructure.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/CorporateCrm.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/src/CorporateCrm.Application/CorporateCrm.Application.csproj": {
+                "projectPath": "/src/CorporateCrm.Application/CorporateCrm.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.*, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.*, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
