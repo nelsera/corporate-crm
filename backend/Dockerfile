@@ -5,9 +5,8 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore
-
-RUN dotnet publish -c Release -o /app
+RUN dotnet restore CorporateCrm.Api/CorporateCrm.Api.csproj
+RUN dotnet publish CorporateCrm.Api/CorporateCrm.Api.csproj -c Release -o /app
 
 # runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
